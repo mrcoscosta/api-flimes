@@ -1,10 +1,12 @@
 const express = require("express");
 const app = express();
+
+const port = process.env.PORT || 3001;
 const filmes = require("./models/filmes2.json");
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
+app.get("/filmes", (req, res) => {
   try {
     res.json(filmes);
   } catch (error) {
@@ -12,6 +14,6 @@ app.get("/", (req, res) => {
   }
 });
 
-app.listen(3222, () => {
-  console.log(`express start at http://localhost:8080`);
+app.listen(port, () => {
+  console.log(`express start at http://localhost:${port}`);
 });
